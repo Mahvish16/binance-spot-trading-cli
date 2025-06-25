@@ -1,5 +1,3 @@
-Here’s a clean and professional `README.md` for your Binance Testnet Order Placer, covering setup, usage, and examples:
-
 ## Binance Spot Testnet Order Placer (Python CLI)
 
 A simple command-line tool built with Python to place **Spot testnet orders** (LIMIT / MARKET, BUY / SELL) using the Binance API.
