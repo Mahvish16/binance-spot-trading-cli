@@ -12,7 +12,7 @@ This tool uses the **[Binance Spot Testnet](https://testnet.binance.vision/)** a
 * Built using class-based design for modularity
 * CLI interface with `argparse`
 
-### 🛠 Requirements
+### Requirements
 
 * Python 3.7+
 * Binance Python SDK: `python-binance`
@@ -63,10 +63,10 @@ python order_placer.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.00
 
 | Argument     | Required | Description                      |
 | ------------ | -------- | -------------------------------- |
-| `--symbol`   | ✅ Yes    | Trading pair, e.g. `BTCUSDT`     |
-| `--side`     | ✅ Yes    | `BUY` or `SELL`                  |
-| `--type`     | ✅ Yes    | `MARKET` or `LIMIT`              |
-| `--quantity` | ✅ Yes    | Amount of asset to trade         |
-| `--price`    | ❌ No     | Required for `LIMIT` orders only |
+| `--symbol`   |  Yes    | Trading pair, e.g. `BTCUSDT`     |
+| `--side`     |  Yes    | `BUY` or `SELL`                  |
+| `--type`     |  Yes    | `MARKET` or `LIMIT`              |
+| `--quantity` |  Yes    | Amount of asset to trade         |
+| `--price`    |  No     | Required for `LIMIT` orders only |
 
 
