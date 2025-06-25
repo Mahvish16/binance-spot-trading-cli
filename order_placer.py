@@ -2,6 +2,14 @@ import os
 from dotenv import load_dotenv
 import argparse
 from binance import Client
+import logging
+
+logging.basicConfig(
+    filename='binance_order.log',
+    level=logging.INFO,  # Use DEBUG for more detail
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 class BinanceOrderPlacer:
     def __init__(self):
@@ -12,6 +20,7 @@ class BinanceOrderPlacer:
         self.client.API_URL = 'https://testnet.binance.vision/api'
 
     def is_valid_symbol(self, symbol):
+        logging.info("Fetching all symbols for validation")
         try:
             tickers = self.client.get_all_tickers()
             valid_symbols = [ticker['symbol'] for ticker in tickers]
@@ -25,6 +34,7 @@ class BinanceOrderPlacer:
         try:
             side = side.upper()
             order_type = order_type.upper()
+            logging.info(f"Placing {order_type} {side} order: Symbol={symbol}, Quantity={quantity}, Price={price}")
 
             if order_type == "LIMIT" and side == "BUY":
                 order = self.client.order_limit_buy(
@@ -50,8 +60,10 @@ class BinanceOrderPlacer:
                 )
             else:
                 raise ValueError("Invalid side or order type provided.")
+            logging.info(f"Order response: {order}")
             return order
         except Exception as e:
+            logging.error(f"Error placing order: {e}")
             return f"Error: {e}"
 
 
